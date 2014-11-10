@@ -116,29 +116,82 @@ extends GameObject {
 
 ## Fokus
 
-architektur daten getrieben
+* Datengetrieben Architektur
+
+
+## Ansatz
+
+* Scott Bilas 2002 @ GDC
+* Dungeon Siege
+* Game Object System 
+
+
+## Fokus
+
+* Datengetrieben Architektur
+* Näher an Designern
+* Kein Software Ingenieur nötig
+* Maximale Abstraktion von GOs
+* Engine ist egal ob GO Monster oder Baum
 
 
 ## Elemente
 
-wichtige elemente
-entities, components, systems, events
+* Grundelemente Elemente
+	* Entities
+	* Components
+	* Systems
+	* Events
 
 
 ## Entities
 
-entities oder game objects
-nur ids (ähnlich wie in datenbank)
+* Representation eines Game Objects
+* Effektiv nur eine ID (ähnlich Datenbank)
+
+
+## Entities
+
+* Impelemntierung z.B. per Facade Pattern
+* Erleichtert OOP Transition
+
+```java
+class Entity {
+	private long id;
+	private EntityManager mgr;
+
+	//...
+	public <T extends Data> void addData (final T someData) {
+		mgr.addDataToEntity (this.id, someData);
+	}
+}
+```
 
 
 ## Components/Data
 
-componeten sind daten bzw ausprägungen (position, rotation, lebenspunkte, ki-state, renderinformation)
+* Beschreiben Ausprägung einer Entity
+	* Position/Rotation
+	* Lebenspunkte, Rüstung
+	* Renderinformationen
+
+
+## Components/Data
+
+```java
+class PhysicsComponent
+extends Data {
+	public int mass;
+	public Vector3 velocity; 
+}
+```
 
 
 ## Systems/Processors
 
-system verantwortlich für bearbeitung, update von logik daten bzw anzeigen von render daten
+* Halt Logik verantwortlich für
+	* Berechnung einer Komponente
+	* Berechnung eine Gruppe von Komponenten
 
 
 
