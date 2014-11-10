@@ -1,5 +1,5 @@
-# Entity/Component
-# Architecture
+## Entity/Component
+## Architecture
 
 by Sven Freiberg
 
@@ -160,11 +160,20 @@ class Entity {
 	private long id;
 	private EntityManager mgr;
 
-	//...
+	// ...
+
 	public <T extends Data> void addData (final T someData) {
 		mgr.addDataToEntity (this.id, someData);
 	}
 }
+```
+
+
+## Entities
+
+```java
+// travels a max of 1337m and hits for 42hp
+bullet.addData (new DamageModifier (42, 1337));
 ```
 
 
@@ -189,9 +198,31 @@ extends Data {
 
 ## Systems/Processors
 
-* Halt Logik verantwortlich für
+* Hält Logik verantwortlich für
 	* Berechnung einer Komponente
-	* Berechnung eine Gruppe von Komponenten
+	* Sematische Gruppen von Komponenten
+
+
+## Systems/Processors
+
+```java
+class MovementProcessor extends Processor {
+	// ...
+
+	@Override public onProcessing (float dt) {
+		List <IEntity> entities =
+			this.emgr.getEntitiesWithAspects (Position.class,
+											  Physics.class);
+
+		for (IEntity e : entities) {
+			Physics phy = e.get (Physics.class);
+			Position pos = e.get (Position.class);
+			// translate position with respect to passed time
+			pos.translate (phy.velocity.multiply (dt));
+		}
+	}
+}
+```
 
 
 
@@ -206,14 +237,23 @@ extends Data {
 # Fazit
 
 
-### Pro
+### Pros
+
 * Leicht erweiterbar
-* Übersichtliche Abbildung Komplexer Kombinationen
-* Zusammenstellen neuer Konstrukte aus bereits bestehenden
-### Con
-* Hoher initialer Aufwand
-* Gewöhnen an datengetriebene Architektur
-* Großer Overhead wenn starr datengetrieben
+	* Generierung neuer 'Typen' via Kombination
+* Änderung des Verhalten von Entitäten
+	* Austausch von Komponenten
+* Übersichtliche Abbildung Komplexer Game Objects
+* Gute Einbindung in Editoren
+	* ECS kann von Designern verwaltet werden
+
+
+### Cons
+
+* Hoher initialer Aufwand (inkl. Pardigmengewöhnung)
+* Overhead wenn starr datengetrieben
+* Hohes Potenzial für Spaghetti Code
+	* Eventuelle Abhängigkeit von Komponenten/Prozessoren
 
 
 
@@ -230,24 +270,18 @@ extends Data {
 
 ## Frameworks
 
-beispiele von implementierungen
-dungeon siege 1 engine, arthemis framework, yanecos, unity engine
+* Frameworks
+	* Arthemis (Java, C#, ObjC)
+	* Yanecos (Java, C#, C++)
+* Engines
+	* Dungeon Siege (1)
+	* Unity
 
-
-## History
-
-historie
-dungeon siege
-	ziele eher richtung script sprache um reibung zu designern zu verringern
-arthemis && yanecos
-	relative dünne schicht
-unity
-	???
 
 
 ## CODE !!?
 
-codebeispiel? || livedemo?
+livedemo?
 
 
 
@@ -279,3 +313,9 @@ codebeispiel? || livedemo?
 	- https://en.wikipedia.org/wiki/Entity_component_system
 * Starcraft Screenshot
 	- http://static.giantbomb.com/uploads/original/0/1468/184087-starcraft.png
+
+
+
+# Danke !
+
+Fragen oder Anmerkungen ?
