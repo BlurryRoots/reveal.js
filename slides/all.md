@@ -245,7 +245,6 @@ class MovementProcessor extends Processor {
 	* Austausch von Komponenten
 * Übersichtliche Abbildung Komplexer Game Objects
 * Gute Einbindung in Editoren
-	* ECS kann von Designern verwaltet werden
 
 
 ### Cons
@@ -253,7 +252,17 @@ class MovementProcessor extends Processor {
 * Hoher initialer Aufwand (inkl. Pardigmengewöhnung)
 * Overhead wenn starr datengetrieben
 * Hohes Potenzial für Spaghetti Code
-	* Eventuelle Abhängigkeit von Komponenten/Prozessoren
+	* Abhängigkeit von Komponenten
+	* Reihenfolge von Processoren
+	* Messagepassing
+
+
+
+## Meinung
+
+* Mächtige Architektur
+* Vorsichtig einsetzen
+* Kein Allheilmittel
 
 
 
@@ -265,7 +274,7 @@ class MovementProcessor extends Processor {
 
 
 
-# Beispiel
+# Beispiele
 
 
 ## Frameworks
@@ -313,6 +322,15 @@ livedemo?
 	- https://en.wikipedia.org/wiki/Entity_component_system
 * Starcraft Screenshot
 	- http://static.giantbomb.com/uploads/original/0/1468/184087-starcraft.png
+
+
+# Referenzen
+
+* Kravall
+	- Core Engine Design
+	- http://kravall.autious.net/?p=148
+* Entity/Component Primer
+	- http://piemaster.net/2011/07/entity-component-primer/
 
 
 
