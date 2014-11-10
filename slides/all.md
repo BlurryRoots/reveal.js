@@ -78,6 +78,10 @@ extends GameObject {
 		renderable.onUpdate (dt);
 		collidable.onUpdate (dt);
 	}
+
+	@Override void onRender () {
+		renderable.render ();
+	}
 }
 ```
 

@@ -4,7 +4,7 @@ Reveal.initialize({
 	// when the presentation is scaled to fit different resolutions. Can be
 	// specified using percentage units.
 	width: 1024,
-	height: 768,
+	height: 900,
 
 	// Factor of the display size that should remain empty around the content
 	margin: 0.1,

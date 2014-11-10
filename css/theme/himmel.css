@@ -20,7 +20,7 @@ body {
 .reveal {
   /*font-family: "Open Sans", sans-serif;*/
   font-family: "Cuprum", sans-serif;
-  font-size: 42px;
+  font-size: 44px;
   font-weight: normal;
   /*letter-spacing: 0.02em;*/
   color: #333333; }
@@ -143,5 +143,5 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #420042;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold; }
