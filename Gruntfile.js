@@ -48,7 +48,8 @@ module.exports = function(grunt) {
 					'css/theme/sky.css': 'css/theme/source/sky.scss',
 					'css/theme/moon.css': 'css/theme/source/moon.scss',
 					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					'css/theme/blood.css': 'css/theme/source/blood.scss'
+					'css/theme/blood.css': 'css/theme/source/blood.scss',
+					'css/theme/minimal.css': 'css/theme/source/minimal.scss'
 				}
 			}
 		},
@@ -73,7 +74,10 @@ module.exports = function(grunt) {
 					unescape: false
 				}
 			},
-			files: [ 'Gruntfile.js', 'js/reveal.js' ]
+			files: [
+				'Gruntfile.js',
+				'js/reveal.js'
+			]
 		},
 
 		connect: {
@@ -98,11 +102,21 @@ module.exports = function(grunt) {
 
 		watch: {
 			main: {
-				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css' ],
+				files: [
+					'Gruntfile.js',
+					'js/reveal.js',
+					'js/init.js',
+					'css/reveal.css',
+					'css/theme/himmel.css',
+					'slides/*'
+				],
 				tasks: 'default'
 			},
 			theme: {
-				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
+				files: [
+					'css/theme/source/*.scss',
+					'css/theme/template/*.scss'
+				],
 				tasks: 'themes'
 			}
 		}
@@ -120,18 +134,34 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-zip' );
 
 	// Default task
-	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
+	grunt.registerTask( 'default', [
+		'jshint',
+		'cssmin',
+		'uglify',
+		'qunit'
+	] );
 
 	// Theme task
-	grunt.registerTask( 'themes', [ 'sass' ] );
+	grunt.registerTask( 'themes', [
+		'sass'
+	] );
 
 	// Package presentation to archive
-	grunt.registerTask( 'package', [ 'default', 'zip' ] );
+	grunt.registerTask( 'package', [
+		'default',
+		'zip'
+	] );
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+	grunt.registerTask( 'serve', [
+		'connect',
+		'watch'
+	] );
 
 	// Run tests
-	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+	grunt.registerTask( 'test', [
+		'jshint',
+		'qunit'
+	] );
 
 };
