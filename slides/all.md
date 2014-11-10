@@ -86,19 +86,20 @@ extends GameObject {
 
 * Wo sollen GOs verwaltet werden?
 * Abhänigkeiten (tight cuppling) von Komponenten
-* Überladungsparty
+* Überladungsparty wenn mehrere Ebenen
 * Starre Architektur
 
 
 ## Probleme
 
+* Designer werden sich kaum an Klassenstruktur halten wollen
 * Anforderung werden mit Sicherheit geändert
 * Meistens auch gravierendk (Prototyping)
 
 
 ## (Philosophischer) Ansatz
 
-* Datenbank mit glitzerndem Interface
+* Spiel ist Datenbank mit glitzernder Benutzeroberfläche
 
 
 
@@ -194,3 +195,34 @@ unity
 ## CODE !!?
 
 codebeispiel? || livedemo?
+
+
+
+# Referenzen
+
+* Data-Driven Game Object System
+	- Scott Bilas
+	- http://scottbilas.com/files/2002/gdc_san_jose/game_objects_slides_with_notes.pdf
+* Entity Systems are the future of MMOG development
+	- Adam Martin
+	- http://t-machine.org/index.php/2007/09/03/entity-systems-are-the-future-of-mmog-development-part-1/
+
+
+# Referenzen
+
+* Evolve your Hirachy (!)
+	- Mick West
+	- http://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/
+* Case Study: Bomberman Mechanics in an ECS
+	- Philip Fortier
+	- http://www.gamedev.net/page/resources/_/technical/game-programming/case-study-bomberman-mechanics-in-an-entity-component-system-r3159
+
+
+# Referenzen
+
+* Rogue Basins Wiki Entry
+	- http://www.roguebasin.com/index.php?title=Entity_Component_System
+* Wikipedia Entry
+	- https://en.wikipedia.org/wiki/Entity_component_system
+* Starcraft Screenshot
+	- http://static.giantbomb.com/uploads/original/0/1468/184087-starcraft.png
