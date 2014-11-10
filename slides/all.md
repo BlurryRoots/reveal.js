@@ -1,24 +1,7 @@
 # Entity/Component
 # Architecture
 
-by sven freiberg
-
-
-
-# Advanced Patterns
-
-
-## Example - Parsing HTTP Headers
-
-- Given a standard response headers, pull code and date out
-
-```
-HTTP/1.x 200 OK
-Date: Sat, 28 Nov 2009 04:36:25 GMT
-Expires: Sat, 28 Nov 2009 05:36:25 GMT
-```
-
-- `/(?:(HTTP)\/\d\.[a-z]|(Date|Expires):) (?(1)(\d+)|([A-Za-z ,\d:]+))/`
+by Sven Freiberg
 
 
 
@@ -36,29 +19,31 @@ Expires: Sat, 28 Nov 2009 05:36:25 GMT
 ## Engine Design
 
 * Vereinfachte Darstellung
-* Logik in `Update Loop`
-* Anzeige in `Render Loop`
+* Logik in ```Update(dt)```
+* Anzeige in ```Render()```
+* Periodisch aufgerufen
 
 
 ## Traditionelle Architektur
-- 2 min
 
 * GO (Game Object) mit unterschiedlichen Ausprägungen
 
 
 ## Traditionelle Architektur
 
+* GO (Game Object) mit unterschiedlichen Ausprägungen
+
 ![traditionell](/gfx/newfangled.png)
 
 
 ## Konsequenz
+
 * Logik und Daten gemeinsam verwaltet
 * Single Responsibility
 * Problematisch bei Sprachen ohne Mehrfachvererbung
 
 
 ## Ableitung
-- 2 min (4 min)
 
 ```java
 class Spaceship
@@ -67,8 +52,7 @@ implements IRenderable,
 		   ICollidable,
 		   IControlable {
 	// ...
-	@Override
-	void onRender (Context ctx) {
+	@Override void onRender (Context ctx) {
 		// ...
 	}
 }
@@ -82,23 +66,15 @@ implements IRenderable,
 
 
 ## Komposition
-- 2 min (6 min)
 
 ```java
 class Spaceship
-extends GameObject
-implements IRenderable,
-		   ICollidable,
-		   IControlable {
-	private
-	Renderable renderable;
-	private
-	Collidable collidable;
-	private
-	Controlable controlable;
+extends GameObject {
+	private Renderable renderable;
+	private Collidable collidable;
+	private Controlable controlable;
 
-	@Override
-	void onUpdate (float dt) {
+	@Override void onUpdate (float dt) {
 		renderable.onUpdate (dt);
 		collidable.onUpdate (dt);
 	}
@@ -106,30 +82,23 @@ implements IRenderable,
 ```
 
 
-### Motivation
-# Probleme
-- 4 min (10 min)
+## Probleme
 
-* starr
-* unflexible
-* abhänigkeiten (tight cuppling)
-* virtuelle funkionsüberladungsparty
-* wo sollen objecte verwaltet werden?
-* wer verwaltet was?
+* Wo sollen GOs verwaltet werden?
+* Abhänigkeiten (tight cuppling) von Komponenten
+* Überladungsparty
+* Starre Architektur
 
 
-### Motivation
-# Probleme
-- 2 min (12 min)
+## Probleme
 
-spielearchitektur eher agil, anforderungen insbesonder in prototypenphase sehr wild
+* Anforderung werden mit Sicherheit geändert
+* Meistens auch gravierendk (Prototyping)
 
 
-### Motivation
-# Datenbank
-- 2 min (14 min)
+## (Philosophischer) Ansatz
 
-eigentlich ist spiel nur eine schöne representation von werten in einer datenbank
+* Datenbank mit glitzerndem Interface
 
 
 
@@ -144,39 +113,29 @@ eigentlich ist spiel nur eine schöne representation von werten in einer datenba
 # Aufbau
 
 
-### Aufbau
 ## Fokus
-- 2 min (16 min)
 
 architektur daten getrieben
 
 
-# Aufbau
-# Elemente
-- 2 min (18 min)
+## Elemente
 
 wichtige elemente
 entities, components, systems, events
 
 
-# Aufbau
 ## Entities
-- 4 min (22 min)
 
 entities oder game objects
 nur ids (ähnlich wie in datenbank)
 
 
-# Aufbau
 ## Components/Data
-- 2 min (24 min)
 
 componeten sind daten bzw ausprägungen (position, rotation, lebenspunkte, ki-state, renderinformation)
 
 
-# Aufbau
 ## Systems/Processors
-- 2 min (26 min)
 
 system verantwortlich für bearbeitung, update von logik daten bzw anzeigen von render daten
 
@@ -215,17 +174,13 @@ system verantwortlich für bearbeitung, update von logik daten bzw anzeigen von 
 # Beispiel
 
 
-# Beispiel
 ## Frameworks
-- 2 min (28 min)
 
 beispiele von implementierungen
 dungeon siege 1 engine, arthemis framework, yanecos, unity engine
 
 
-# Beispiel
 ## History
-- 4 min (32 min)
 
 historie
 dungeon siege
@@ -236,7 +191,6 @@ unity
 	???
 
 
-# Beispiel
 ## CODE !!?
-- 4 min (36 min)
+
 codebeispiel? || livedemo?
